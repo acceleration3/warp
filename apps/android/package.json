@@ -1,0 +1,20 @@
+{
+  "name": "@share/android",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Android shell (Capacitor) for share-front",
+  "scripts": {
+    "build:ui": "pnpm --filter @share/ui exec vite build --outDir ../../apps/android/www --emptyOutDir",
+    "sync": "pnpm run build:ui && cap sync android",
+    "open": "cap open android",
+    "apk": "pnpm run sync && cd android && ./gradlew assembleDebug",
+    "apk:release": "pnpm run sync && cd android && ./gradlew assembleRelease"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/core": "^8.5.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.2"
+  }
+}

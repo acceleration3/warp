@@ -1,0 +1,7 @@
+node_modules/
+dist/
+out/
+release/
+*.tsbuildinfo
+apps/android/www/
+.DS_Store

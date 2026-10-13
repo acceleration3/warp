@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Warp</string>
+    <string name="title_activity_main">Warp</string>
+    <string name="package_name">dev.sharefront.warp</string>
+    <string name="custom_url_scheme">dev.sharefront.warp</string>
+    <string name="notification_active">Transferring files</string>
+    <string name="notification_ready">Warp is ready</string>
+    <string name="notification_idle">Visible to your other devices</string>
+</resources>

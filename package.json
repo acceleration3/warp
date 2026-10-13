@@ -1,0 +1,16 @@
+{
+  "name": "share-front",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Find devices on your network and send files or whole folders between PC and Android.",
+  "scripts": {
+    "build": "pnpm -r --filter @share/core --filter @share/ui build && pnpm --filter @share/desktop build",
+    "dev": "pnpm --filter @share/desktop dev",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm --filter @share/core test"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  },
+  "packageManager": "pnpm@11.26.0"
+}

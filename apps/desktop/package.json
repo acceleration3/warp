@@ -1,0 +1,38 @@
+{
+  "name": "@share/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Send files and folders between your devices over the local network",
+  "main": "dist/main/index.cjs",
+  "scripts": {
+    "build:main": "esbuild src/main/index.ts --bundle --platform=node --format=cjs --target=node22 --external:electron --outfile=dist/main/index.cjs --sourcemap",
+    "build:preload": "esbuild src/preload/index.ts --bundle --platform=node --format=cjs --target=node22 --external:electron --outfile=dist/preload/index.cjs",
+    "build:ui": "pnpm --filter @share/ui build",
+    "build": "pnpm run build:main && pnpm run build:preload && pnpm run build:ui",
+    "start": "electron .",
+    "dev": "pnpm run build && electron .",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "headless": "node dist/main/headless.cjs",
+    "pack": "pnpm run build && electron-builder --dir",
+    "dist:linux": "pnpm run build && electron-builder --linux",
+    "dist:win": "pnpm run build && electron-builder --win",
+    "dist:all": "pnpm run build && electron-builder --linux --win",
+    "test": "esbuild test/integration.test.ts --bundle --platform=node --format=cjs --target=node22 --outfile=dist/test/integration.cjs --external:electron && esbuild test/range.test.ts --bundle --platform=node --format=cjs --target=node22 --outfile=dist/test/range.cjs --external:electron && node --test dist/test/integration.cjs dist/test/range.cjs"
+  },
+  "devDependencies": {
+    "electron": "^44.4.3",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.9.2",
+    "@types/node": "^24.3.0",
+    "electron-builder": "^26.0.12"
+  },
+  "dependencies": {
+    "@share/core": "workspace:*"
+  },
+  "author": {
+    "name": "share-front"
+  },
+  "desktopName": "warp.desktop",
+  "homepage": "https://github.com/accel/share-front",
+  "license": "MIT"
+}
